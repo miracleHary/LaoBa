@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--设置用户名输入框-->
+<label >用户名
+    <input id="t1" class='info' type="text">
+    <!--空span标签用来后面绑定事件添加提示-->
+    <span></span>
+</label>
+<hr>
+<!--设置密码输入框-->
+<label >密码
+    <input id="t2" class="info" type="password">
+    <!--空span标签用来后面绑定事件添加提示-->
+    <span></span>
+</label>
+<hr>
+<label id="b1">
+    <input type="button" value="登录">
+</label>
+
+<script src="js/jquery.min.js"></script>
+<script>
+    // 按钮绑定点击事件
+    $('#b1').click(function () {
+        let $name=$('#t1');
+        let $pwd=$('#t2');
+        // 按钮点击后检查输入框是否为空，为空则找到span便签添加提示
+        if ($name.val().length===0)
+        {
+            $name.next().text('用户名不能为空')
+        }
+        if($pwd.val().length===0)
+        {
+            $pwd.next().text('密码不能为空')
+        }
+    });
+    // 给输入框添加时间，获取焦点时,将span标签中的内容设置成空
+    $('.info').focus(function () {
+        $(this).next().text('');
+    })
+</script>
+</body>
+</html>
